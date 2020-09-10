@@ -1,3 +1,4 @@
+# file that maps the url of this blog
 from django.urls import path
 from . import views
 
