@@ -1,26 +1,7 @@
 from django.shortcuts import render
+from .models import Posts
 # from django.http import HttpResponse
 
-posts = [
-    {
-        'author': 'Richard',
-        "title": 'Blog Post #1',
-        'content': 'first post contents',
-        'date_posted': 'Sept 10, 2020'
-    },
-    {
-        'author': 'Anna',
-        "title": 'Blog Post #2',
-        'content': 'Second post contents',
-        'date_posted': 'Sept 8, 2020'
-    },
-    {
-        'author': 'RichardR',
-        "title": 'Blog Post #3',
-        'content': 'third post contents',
-        'date_posted': 'Sept 2, 2020'
-    }
-]
 
 # function that handles the traffic to home page
 
@@ -28,7 +9,7 @@ posts = [
 def home(request):
     # add a context
     context = {
-        'posts': posts
+        'posts': Posts.objects.all()
     }
     # return HttpResponse('<doctype />...')
     return render(request, 'blog/home.html', context)
