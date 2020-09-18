@@ -10,7 +10,8 @@ class UserRegisterForm(UserCreationForm):
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
         if email and User.objects.filter(email=email).exclude(username=username).exists():
-            raise forms.ValidationError(u'The Email is already in use.')
+            raise forms.ValidationError(
+                u'This Email already exist in our database!')
         return email
 
     class Meta:
