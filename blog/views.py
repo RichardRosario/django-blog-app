@@ -1,20 +1,22 @@
 from django.shortcuts import render
-from .models import Posts
-# from django.http import HttpResponse
-
-
-# function that handles the traffic to home page
+from django.views.generic import ListView
+from .models import Post
 
 
 def home(request):
     # add a context
     context = {
-        'posts': Posts.objects.all()
+        'posts': Post.objects.all()
     }
     # return HttpResponse('<doctype />...')
     return render(request, 'blog/home.html', context)
 
-# function that handles the about page traffic
+
+class PostListView(ListView):
+    model = Post
+    template_name = 'blog/home.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
 
 
 def about(request):
