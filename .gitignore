@@ -1,6 +1,5 @@
 django_app/__pycache__/
 db.sqlite3
-django_app/settings.py
 media/media/
 
 blog/__pycache__/
